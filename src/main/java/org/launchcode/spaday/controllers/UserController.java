@@ -17,11 +17,14 @@ public class UserController {
         return "user/add";
     }
 
-    @PostMapping("add")
+    @PostMapping("")
     public String processAddUserForm(Model model, @ModelAttribute User user, String verify) {
-        // add form submission handling code here
+        if (user.getPassword().equals(verify)) {
+            return "user/index";
+        } else {
+            return "user/add";
+        }
 
-        return "user/index";
     }
 
 

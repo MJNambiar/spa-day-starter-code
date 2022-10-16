@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-
+    <p th:text="'Welcome ' + ${user.username} + '!'"></p>
+    <a th:href="@{~/}">Choose your services here</a>
 </body>
 </html>
