@@ -5,7 +5,7 @@
     <title></title>
 </head>
 <body>
-<form method = "post" action="/user">
+<form method = "post" th:action="@{/user}">
     <div class="form-group">
         <label>Username
             <input th:field="${user.username}" class="form-control">

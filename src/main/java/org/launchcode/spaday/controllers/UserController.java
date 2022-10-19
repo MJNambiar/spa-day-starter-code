@@ -20,6 +20,9 @@ public class UserController {
 
     @PostMapping("")
     public String processAddUserForm(Model model, @ModelAttribute User user, String verify) {
+//        model.addAttribute("username", user.getUsername());
+//        model.addAttribute("email", user.getEmail());
+        //use these with corresponding th:value="${email} within input in add.html
         if (user.getPassword().equals(verify)) {
             return "user/index";
         } else {
