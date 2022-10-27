@@ -1,28 +1,25 @@
 package org.launchcode.spaday.models;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 public class User {
 
-    @NotBlank(message="Must enter a username.")
-    @Size(min=5, max=15, message="Username must have between 5 and 15 characters.")
+    @NotEmpty(message = "Must enter a username.")
+    @Size(min=5, max=15, message = "Username must have between 5 and 15 characters.")
     private String username;
 
-    @Email(message="Please enter email using example@example.com format.")
+    @Email(message = "Please enter email using example@example.com format.")
     private String email;
 
-    @NotBlank(message="Must enter a password.")
-    @Size(min=6, message="Password must have at least 6 characters.")
+    @NotEmpty(message = "Must enter a password.")
+    @Size(min=6, message = "Password must have at least 6 characters.")
     private String password;
 
 //    @NotBlank(message="Must enter a password verification.")
-//    private String verify;
+    private String verify;
 
-    @NotNull(message="Passwords do not match.")
-    private String verifyPassword;
+//    @NotNull(message="Passwords do not match.")
+//    private String verifyPassword;
 
     public User() {
 
@@ -33,13 +30,13 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
-//        this.verify = verify;
-        this.verifyPassword = verifyPassword;
+        this.verify = verify;
+//        this.verifyPassword = verifyPassword;
     }
 
     private void checkPassword() {
-        if(!password.equals(verifyPassword) || password.equals(null) || verifyPassword.equals(null)){
-            verifyPassword = null;
+        if(!password.equals(verify) || password.equals(null) || verify.equals(null)){
+            verify = null;
         }
     }
 
@@ -68,21 +65,21 @@ public class User {
         checkPassword();
     }
 
-//    public String getVerify() {
-//        return verify;
+    public String getVerify() {
+        return verify;
+    }
+
+    public void setVerify(String verify) {
+        this.verify = verify;
+    }
+
+//    public String getVerifyPassword() {
+//        return verifyPassword;
 //    }
 //
-//    public void setVerify(String verify) {
-//        this.verify = verify;
+//    public void setVerifyPassword(String verifyPassword) {
+//        this.verifyPassword = verifyPassword;
+//        checkPassword();
 //    }
-
-    public String getVerifyPassword() {
-        return verifyPassword;
-    }
-
-    public void setVerifyPassword(String verifyPassword) {
-        this.verifyPassword = verifyPassword;
-        checkPassword();
-    }
 }
 
